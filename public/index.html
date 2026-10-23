@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#D63A24">
+  <title>SHARI · Reserva sushi</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a href="#/" class="brand"><img src="/favicon.svg" alt="" width="28" height="28"><span>SHARI</span></a>
+  </header>
+  <main id="app" aria-live="polite"></main>
+  <nav class="tabbar">
+    <a href="#/" data-tab="explorar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>Explorar
+    </a>
+    <a href="#/mis-reservas" data-tab="reservas">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Mis reservas
+    </a>
+  </nav>
+  <div id="toast" role="status"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

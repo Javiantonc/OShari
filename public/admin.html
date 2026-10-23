@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SHARI · Panel del restaurante</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    body { padding-bottom: 24px; }
+    main { max-width: 760px; }
+    .bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+    .bar select, .bar input { padding: 10px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+    .row { display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .actions { display: flex; gap: 8px; }
+    .actions button { border: 0; border-radius: 10px; padding: 10px 12px; font-weight: 700; cursor: pointer; }
+    .ok { background: #E3F2E8; color: var(--ok); }
+    .ko { background: #FBE3DF; color: var(--red-dark); }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+    .stats div { background: #fff; border-radius: 12px; padding: 12px; text-align: center; }
+    .stats b { display: block; font-size: 22px; }
+    .stats small { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a href="/" class="brand"><img src="/favicon.svg" alt="" width="28" height="28"><span>SHARI</span></a>
+    <span class="sub" style="margin:0 0 0 12px">Panel del restaurante</span>
+  </header>
+  <main>
+    <form id="login" class="card"><div class="body">
+      <h1>Acceso</h1>
+      <div class="field"><label for="pin">PIN del restaurante</label><input id="pin" type="password" inputmode="numeric" required></div>
+      <p class="error" id="loginErr"></p>
+      <button class="btn dark">Entrar</button>
+    </div></form>
+
+    <section id="panel" hidden>
+      <div class="bar">
+        <select id="rest" aria-label="Restaurante"></select>
+        <input id="date" type="date" aria-label="Día">
+      </div>
+      <div class="stats" id="stats"></div>
+      <div id="list"></div>
+    </section>
+  </main>
+  <div id="toast" role="status"></div>
+  <script src="/admin.js"></script>
+</body>
+</html>

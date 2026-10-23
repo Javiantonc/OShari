@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-label="SHARI — reserva sushi">
+  <g transform="translate(40 40) scale(0.5625)">
+    <rect width="512" height="512" rx="112" fill="#D63A24"/>
+    <circle cx="256" cy="256" r="168" fill="#16181C"/>
+    <circle cx="256" cy="256" r="138" fill="#FBF5EA"/>
+    <circle cx="256" cy="256" r="74" fill="#F2875A"/>
+    <path d="M206 236 Q256 214 306 236 M200 262 Q256 240 312 262 M210 288 Q256 268 302 288"
+          fill="none" stroke="#FFD7C2" stroke-width="9" stroke-linecap="round"/>
+  </g>
+  <text x="380" y="210" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+        font-size="168" font-weight="800" letter-spacing="14" fill="#16181C">SHARI</text>
+  <text x="386" y="275" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+        font-size="38" font-weight="500" letter-spacing="10" fill="#D63A24">RESERVA · SUSHI</text>
+</svg>

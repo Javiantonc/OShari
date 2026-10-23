@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="SHARI">
+  <!-- Fondo: rojo bermellón -->
+  <rect width="512" height="512" rx="112" fill="#D63A24"/>
+  <!-- Maki visto desde arriba: alga nori -->
+  <circle cx="256" cy="256" r="168" fill="#16181C"/>
+  <!-- Arroz (shari) -->
+  <circle cx="256" cy="256" r="138" fill="#FBF5EA"/>
+  <!-- Salmón -->
+  <circle cx="256" cy="256" r="74" fill="#F2875A"/>
+  <!-- Vetas del salmón -->
+  <path d="M206 236 Q256 214 306 236 M200 262 Q256 240 312 262 M210 288 Q256 268 302 288"
+        fill="none" stroke="#FFD7C2" stroke-width="9" stroke-linecap="round"/>
+</svg>

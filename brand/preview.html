@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SHARI · Marca</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+  :root { --bg:#F7F3EC; --fg:#16181C; --muted:#6B6760; --card:#fff; --accent:#D63A24; }
+  body { margin:0; background:var(--bg); color:var(--fg); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; }
+  main { max-width:880px; margin:0 auto; padding:40px 16px 64px; }
+  h1 { font-size:14px; letter-spacing:.2em; color:var(--muted); font-weight:600; margin:0 0 24px; }
+  .card { background:var(--card); border-radius:20px; padding:32px; margin-bottom:20px; }
+  .logo img { width:100%; max-width:640px; display:block; }
+  .sizes { display:flex; flex-wrap:wrap; gap:28px; align-items:flex-end; }
+  .sizes figure { margin:0; text-align:center; font-size:12px; color:var(--muted); }
+  .sizes img { display:block; margin:0 auto 8px; }
+  .phone { display:flex; gap:20px; flex-wrap:wrap; }
+  .tile { width:96px; text-align:center; font-size:13px; }
+  .tile img { width:72px; height:72px; border-radius:18px; display:block; margin:0 auto 6px; box-shadow:0 4px 14px rgba(0,0,0,.15); }
+  .swatches { display:flex; gap:12px; flex-wrap:wrap; }
+  .sw { width:120px; font-size:12px; color:var(--muted); }
+  .sw div { height:56px; border-radius:12px; margin-bottom:6px; border:1px solid #0001; }
+  button { background:var(--fg); color:#fff; border:0; border-radius:10px; padding:10px 14px; font-size:14px; cursor:pointer; margin:4px 6px 0 0; }
+  .dark { background:#16181C; }
+</style>
+</head>
+<body>
+<main>
+  <h1>SHARI — IDENTIDAD DE MARCA</h1>
+
+  <section class="card logo"><img src="logo.svg" alt="Logo SHARI"></section>
+
+  <section class="card">
+    <div class="sizes">
+      <figure><img src="favicon.svg" width="180" alt="">180 px</figure>
+      <figure><img src="favicon.svg" width="96" alt="">96 px</figure>
+      <figure><img src="favicon.svg" width="48" alt="">48 px</figure>
+      <figure><img src="favicon.svg" width="32" alt="">32 px</figure>
+      <figure><img src="favicon.svg" width="16" alt="">16 px</figure>
+    </div>
+  </section>
+
+  <section class="card dark">
+    <div class="phone">
+      <div class="tile" style="color:#fff"><img src="favicon.svg" alt="">SHARI</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="swatches">
+      <div class="sw"><div style="background:#D63A24"></div>Bermellón #D63A24</div>
+      <div class="sw"><div style="background:#16181C"></div>Nori #16181C</div>
+      <div class="sw"><div style="background:#FBF5EA"></div>Arroz #FBF5EA</div>
+      <div class="sw"><div style="background:#F2875A"></div>Salmón #F2875A</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <strong>Descargar PNG</strong><br>
+    <button data-s="16">16</button><button data-s="32">32</button><button data-s="180">180 (iOS)</button>
+    <button data-s="192">192</button><button data-s="512">512</button><button data-s="1024">1024 (tiendas)</button>
+  </section>
+</main>
+<script>
+  document.querySelectorAll('button[data-s]').forEach(b => b.onclick = () => {
+    const s = +b.dataset.s, img = new Image();
+    img.onload = () => {
+      const c = document.createElement('canvas'); c.width = c.height = s;
+      c.getContext('2d').drawImage(img, 0, 0, s, s);
+      const a = document.createElement('a');
+      a.download = `shari-${s}.png`; a.href = c.toDataURL('image/png'); a.click();
+    };
+    img.src = 'favicon.svg';
+  });
+</script>
+</body>
+</html>
