@@ -16,7 +16,7 @@ function esc(s) {
 }
 
 async function api(path, opts = {}) {
-  const res = await fetch(`/api${path}`, { ...opts, headers: { 'x-admin-pin': pin } });
+  const res = await fetch(`api.php${path}`, { ...opts, headers: { 'x-admin-pin': pin } });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw Object.assign(new Error(data.error || 'Error'), { status: res.status });
   return data;
@@ -35,7 +35,7 @@ const now = new Date();
 $date.value = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
 
 async function start() {
-  const rests = await fetch('/api/restaurants').then((r) => r.json());
+  const rests = await fetch('api.php/restaurants').then((r) => r.json());
   $rest.innerHTML = rests.map((r) => `<option value="${esc(r.id)}">${esc(r.name)}</option>`).join('');
   try {
     await load();

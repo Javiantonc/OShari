@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SHARI · Panel del restaurante</title>
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
   <style>
-    body { padding-bottom: 24px; }
+    body { padding-bottom: 24px; max-width: 760px; }
     main { max-width: 760px; }
     .bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
     .bar select, .bar input { padding: 10px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
@@ -24,7 +24,7 @@
 </head>
 <body>
   <header class="topbar">
-    <a href="/" class="brand"><img src="/favicon.svg" alt="" width="28" height="28"><span>SHARI</span></a>
+    <a href="index.html" class="brand"><img src="favicon.svg" alt="" width="28" height="28"><span>SHARI</span></a>
     <span class="sub" style="margin:0 0 0 12px">Panel del restaurante</span>
   </header>
   <main>
@@ -45,6 +45,6 @@
     </section>
   </main>
   <div id="toast" role="status"></div>
-  <script src="/admin.js"></script>
+  <script src="admin.js"></script>
 </body>
 </html>

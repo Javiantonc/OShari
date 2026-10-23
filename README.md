@@ -2,16 +2,15 @@
 
 App para reservar mesa en restaurantes de sushi: ver la carta, reservar y pagar una señal de 10 € que se pierde si el cliente no se presenta.
 
-## Arrancar
+## Arrancar con XAMPP
 
-Solo hace falta Node.js 18 o superior, sin instalar nada más.
+1. Copia esta carpeta en `C:\xampp\htdocs\Oshari` (o clónala ahí con git).
+2. Abre el **XAMPP Control Panel** y pulsa **Start** en **Apache**.
+3. Entra en:
+   - App del cliente: http://localhost/Oshari/
+   - Panel del restaurante: http://localhost/Oshari/admin.html (PIN por defecto `1234`)
 
-```bash
-node server.js
-```
-
-- App del cliente: http://localhost:3000 (pensada para el móvil; se puede añadir a la pantalla de inicio)
-- Panel del restaurante: http://localhost:3000/admin (PIN por defecto `1234`)
+No hace falta MySQL: las reservas se guardan en `data/db.json`, que se crea solo la primera vez.
 
 ## Cómo funciona la señal
 
@@ -23,41 +22,43 @@ node server.js
 | No se presenta | El restaurante marca **No vino** y se pierde |
 | No paga en 15 min | La reserva caduca y la mesa queda libre |
 
-Las cifras están al principio de `server.js` (`DEPOSIT_EUR`, `FREE_CANCEL_HOURS`, `HOLD_MINUTES`).
+Las cifras están al principio de `api.php` (`DEPOSIT_EUR`, `FREE_CANCEL_HOURS`, `HOLD_MINUTES`).
 
 ## Pagos reales con Stripe
 
-Sin configurar nada, la app funciona en **modo demo** y el pago se simula. Para cobrar de verdad:
+Sin configurar nada, la app funciona en **modo demo** y el pago se simula. Para cobrar de verdad, define la variable de entorno `STRIPE_SECRET_KEY` (por ejemplo `sk_test_...`) en Apache. En XAMPP se puede añadir al final de `C:\xampp\apache\conf\httpd.conf`:
 
-1. Crea una cuenta en stripe.com y copia la clave secreta (empieza por `sk_test_` para pruebas).
-2. Arranca con:
-
-```bash
-STRIPE_SECRET_KEY=sk_test_xxx PUBLIC_URL=https://tu-dominio.com node server.js
+```
+SetEnv STRIPE_SECRET_KEY sk_test_xxx
+SetEnv ADMIN_PIN tu-pin
 ```
 
-El cliente paga en Stripe Checkout (tarjeta, Apple Pay, Google Pay) y vuelve a la app con la reserva confirmada.
+y reiniciar Apache. El cliente paga en Stripe Checkout (tarjeta, Apple Pay, Google Pay) y vuelve a la app con la reserva confirmada.
 
-## Variables de entorno
+## Cambiar restaurantes o cartas
 
-| Variable | Para qué |
-|---|---|
-| `PORT` | Puerto (3000 por defecto) |
-| `ADMIN_PIN` | PIN del panel del restaurante. **Cámbialo** antes de publicar |
-| `STRIPE_SECRET_KEY` | Activa los pagos reales |
-| `PUBLIC_URL` | Dirección pública, para que Stripe sepa dónde volver |
+Los datos están en `tools/seed.js` y `tools/seed-tripadvisor.js`. Después de editarlos:
+
+```
+node tools/build-seed.js
+```
+
+y borra la carpeta `data/` para que la app cargue los datos nuevos (también borra las reservas).
 
 ## Archivos
 
-- `server.js`: API, reglas de la señal y pagos
-- `seed.js` y `seed-tripadvisor.js`: los 14 restaurantes de Madrid con sus cartas (se copian a `data/db.json` la primera vez; borra `data/` para recargarlos)
+- `index.html`, `app.js`, `styles.css`: app del cliente
+- `admin.html`, `admin.js`: panel del restaurante
+- `api.php`: API de reservas, reglas de la señal y pagos
+- `seed.json`: restaurantes y cartas que carga la API
+- `tools/`: datos de origen y script que genera `seed.json`
 - `brand/`: logo y favicon de SHARI
-- `public/`: app del cliente (`index.html`, `app.js`) y panel (`admin.html`, `admin.js`)
+- `.htaccess`: impide descargar `data/` y `tools/` desde el navegador
 
 ## Pendiente para producción
 
 - Cuentas de cliente (ahora "Mis reservas" se guarda en el propio móvil) y acceso propio para cada restaurante
-- Una base de datos de verdad (PostgreSQL) en lugar del archivo JSON
+- Una base de datos de verdad (MySQL, que ya viene con XAMPP) en lugar del archivo JSON
 - Emails o SMS de confirmación y recordatorio
 - Webhook de Stripe, por si el cliente cierra el navegador justo después de pagar
 - Marcar automáticamente como "No vino" las reservas que el restaurante no marque

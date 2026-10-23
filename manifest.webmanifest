@@ -1,9 +1,9 @@
 {
   "name": "SHARI · Reserva sushi",
   "short_name": "SHARI",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#FBF5EA",
   "theme_color": "#D63A24",
-  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
 }

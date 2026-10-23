@@ -15,7 +15,9 @@
   -webkit-tap-highlight-color: transparent;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--rice); min-height: 100vh; padding-bottom: 84px; }
+html { background: #EFE6D6; }
+/* En el ordenador la app se ve como en el móvil: una columna centrada */
+body { margin: 0 auto; max-width: 560px; background: var(--rice); min-height: 100vh; padding-bottom: 84px; box-shadow: 0 0 40px rgba(22,24,28,.08); }
 a { color: inherit; }
 button, input, select, textarea { font: inherit; color: inherit; }
 
@@ -35,6 +37,7 @@ h2 { font-size: 18px; margin: 24px 0 10px; }
 
 .tabbar {
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 5;
+  max-width: 560px; margin: 0 auto;
   display: flex; justify-content: center; gap: 56px;
   background: #fff; border-top: 1px solid var(--line);
   padding: 8px 0 calc(8px + env(safe-area-inset-bottom));

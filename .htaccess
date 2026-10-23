@@ -1,0 +1,12 @@
+# Que nadie pueda descargar las reservas, los datos de origen ni el repositorio git.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^(data|tools|\.git)(/|$) - [F,L]
+</IfModule>
+<FilesMatch "^(seed\.json|README\.md|\.gitignore)$">
+  Require all denied
+</FilesMatch>
+
+# api.php/restaurants, api.php/reservations/... llegan a api.php
+AcceptPathInfo On
+DirectoryIndex index.html
